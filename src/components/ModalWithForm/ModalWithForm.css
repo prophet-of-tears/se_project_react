@@ -1,0 +1,85 @@
+.modal {
+  visibility: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  row-gap: 24px;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.modal_opened {
+  visibility: visible;
+}
+
+.modal__form {
+  border-radius: 20px;
+  border: 1px;
+  background-color: rgb(255, 255, 255);
+  position: relative;
+  padding: 28px 28px 36px;
+  width: 496px;
+}
+
+.modal__title {
+  margin-bottom: 24px;
+  font-size: 16px;
+  line-height: 20px;
+}
+.modal__close {
+  position: absolute;
+  top: 30px;
+  right: 28px;
+  background-image: url(../../assets/formClose.svg);
+  width: 20px;
+  height: 20px;
+  width: 22px;
+  height: 22px;
+  border: none;
+  background-repeat: no-repeat;
+  background-color: rgb(255, 255, 255);
+}
+
+.modal__label {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 24px;
+}
+
+.modal__input {
+  border: none;
+  border-bottom: solid 1px;
+}
+
+.modal__radio-buttons {
+  width: 173px;
+  height: 108px;
+  border: none;
+  padding: 0;
+}
+
+.modal__legend {
+  margin: 0 0 24px;
+}
+
+.modal__label-type-radio {
+  margin-bottom: 8px;
+  display: flex;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.modal__submit-btn {
+  padding: 0;
+  margin-top: 32px;
+  width: 124px;
+  height: 36px;
+  border: none;
+  border-radius: 4px;
+  color: rgb(255, 255, 255);
+  background-color: rgba(0, 0, 0, 0.3);
+}

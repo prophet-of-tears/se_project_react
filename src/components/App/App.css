@@ -1,0 +1,11 @@
+.page {
+  background-color: #f3f3f3;
+  font-family: "Cabinet Grotesk";
+  font-weight: 700;
+  width: 1360px;
+}
+
+.page__content {
+  width: 1360px;
+  margin: 0, auto;
+}

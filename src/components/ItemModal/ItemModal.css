@@ -1,0 +1,24 @@
+.modal__content-type-image {
+  width: 450px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 10px;
+}
+
+.modal__close-item {
+  top: 50px;
+  right: 472px;
+  background-image: url(../../assets/CloseBtn.svg);
+  background-color: rgba(234, 233, 233, 0.302);
+}
+
+.modal__image {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  height: 450px;
+}
+
+.modal__footer {
+  padding: 0 32px 32px;
+  font-size: 20px;
+  line-height: 24px;
+}

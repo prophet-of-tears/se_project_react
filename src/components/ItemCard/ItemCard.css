@@ -1,0 +1,32 @@
+.clothing__card-list {
+  list-style-type: none;
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 20px;
+}
+
+.clothing__card-item {
+  position: relative;
+  width: 295px;
+}
+
+.clothing__card-image {
+  border-radius: 15px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  width: 100%;
+}
+
+.clothing__card-title {
+  font-size: 16px;
+  line-height: 20px;
+  opacity: 0.6;
+  width: 72px;
+  height: 24px;
+  position: absolute;
+  top: 15px;
+  left: 130px;
+  background-color: #fff;
+  margin: 0 auto;
+  text-align: center;
+}
