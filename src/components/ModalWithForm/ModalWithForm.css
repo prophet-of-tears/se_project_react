@@ -11,6 +11,7 @@
   row-gap: 24px;
   font-size: 16px;
   line-height: 20px;
+  background-color: rgba(0, 0, 0, 0.3);
 }
 
 .modal_opened {
