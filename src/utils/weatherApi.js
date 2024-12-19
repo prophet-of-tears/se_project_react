@@ -13,8 +13,9 @@ export const getCurrentWeather = ({ latitude, longitude }, APIkey) => {
 export const filterWeatherData = (data) => {
   const result = {};
   result.city = data.name;
-  result.temp = { F: data.main.temp };
-  result.type = getWeatherType(result.temp.F);
+  result.type = getWeatherType(data.main.temp);
+  result.weather = { F: `${Math.round(data.main.temp)}` };
+  result.weather.C = `${Math.round(((data.main.temp - 32) * 5) / 9)}`;
 
   return result;
 };
@@ -22,9 +23,9 @@ export const filterWeatherData = (data) => {
 const getWeatherType = (temperature) => {
   if (temperature >= 86) {
     return "hot";
-  } else if (temperature >= 66) {
+  } else if (temperature >= 66 || temperature <= 85) {
     return "warm";
-  } else {
+  } else if (temperature <= 65) {
     return "cold";
   }
 };

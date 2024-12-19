@@ -1,7 +1,14 @@
-function ModalWithForm({ children, buttonText, title, isOpen, handleClose }) {
+function ModalWithForm({
+  children,
+  buttonText,
+  title,
+  isOpen,
+  handleClose,
+  onSubmit,
+}) {
   return (
     <div className={`modal ${isOpen ? "modal_opened" : ""}`}>
-      <form action="" className="modal__form">
+      <form action="" className="modal__form" onSubmit={onSubmit}>
         <h2 className="modal__title">{title}</h2>
         <button
           type="button"
