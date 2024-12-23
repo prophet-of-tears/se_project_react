@@ -14,6 +14,7 @@ export const filterWeatherData = (data) => {
   const result = {};
   result.city = data.name;
   result.type = getWeatherType(data.main.temp);
+
   result.weather = { F: `${Math.round(data.main.temp)}` };
   result.weather.C = `${Math.round(((data.main.temp - 32) * 5) / 9)}`;
 
@@ -21,11 +22,11 @@ export const filterWeatherData = (data) => {
 };
 
 const getWeatherType = (temperature) => {
-  if (temperature >= 86) {
+  if (temperature >= 86.0) {
     return "hot";
-  } else if (temperature >= 66 || temperature <= 85) {
+  } else if (temperature >= 69.0 && temperature <= 85.99) {
     return "warm";
-  } else if (temperature <= 65) {
+  } else {
     return "cold";
   }
 };

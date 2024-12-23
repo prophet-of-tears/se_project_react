@@ -9,6 +9,7 @@ import ItemModal from "../ItemModal/ItemModal";
 import Footer from "../Footer/Footer";
 import AddItemModal from "../../AddItemModal/AddItemModal";
 import Profile from "../Profile/Profile";
+import { getItems, addItem, deleteItem } from "../../utils/api";
 
 import { getCurrentWeather, filterWeatherData } from "../../utils/weatherApi";
 import { coordinates, APIkey } from "../../utils/constants";
@@ -23,6 +24,7 @@ function App() {
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
+  const [clothingItems, setClothingItems] = useState([]);
 
   const handleCardClick = (card) => {
     setActiveModal("preview");
@@ -37,8 +39,20 @@ function App() {
     setActiveModal("");
   };
 
+  const handleDeleteCard = (card) => {
+    deleteItem(card).then(() => {
+      console.log("Delete response:", card);
+      setClothingItems((prevCards) =>
+        prevCards.filter((card) => card._id !== selectedCard._id)
+      ).catch(`Error: ${card.status}`);
+      handleModalClose();
+    });
+  };
+
   const onAddItem = (values) => {
-    console.log(values);
+    addItem(values).then((res) => {
+      setClothingItems((prev) => [res, ...prev]);
+    });
   };
 
   useEffect(() => {
@@ -46,6 +60,16 @@ function App() {
       .then((data) => {
         const filterData = filterWeatherData(data);
         setWeatherData(filterData);
+      })
+      .catch(console.error);
+  }, []);
+
+  useEffect(() => {
+    getItems()
+      .then((data) => {
+        setClothingItems(data);
+
+        return data;
       })
       .catch(console.error);
   }, []);
@@ -73,6 +97,7 @@ function App() {
                 <Main
                   weatherData={weatherData}
                   handleCardClick={handleCardClick}
+                  clothingItems={clothingItems}
                 />
               }
             />
@@ -82,11 +107,13 @@ function App() {
                 <Profile
                   weatherData={weatherData}
                   handleCardClick={handleCardClick}
+                  clothingItems={clothingItems}
+                  handleAddClick={handleAddClick}
                 />
               }
             />
           </Routes>
-          {/* <Main weatherData={weatherData} handleCardClick={handleCardClick} /> */}
+
           <Footer />
         </div>
         <AddItemModal
@@ -101,6 +128,7 @@ function App() {
           activeModal={activeModal}
           card={selectedCard}
           onClose={handleModalClose}
+          handleDeleteCard={handleDeleteCard}
         />
       </CurrentTemperatureUnitContext.Provider>
     </div>

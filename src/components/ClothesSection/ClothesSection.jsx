@@ -1,20 +1,27 @@
 import "./ClothesSection.css";
-import { defaultClothingItems } from "../../utils/constants";
+
 import ItemCard from "../ItemCard/ItemCard";
 
-function ClothesSection({ weatherData, handleCardClick }) {
+function ClothesSection({
+  weatherData,
+  handleCardClick,
+  clothingItems,
+  handleAddClick,
+}) {
   return (
     <div className="clothing">
       <div className="clothing__content">
         <p className="clothing__title">Your Items</p>
-        <button className="clothing__add-btn"> + Add New</button>
+        <button className="clothing__add-btn" onClick={handleAddClick}>
+          {" "}
+          + Add New
+        </button>
       </div>
       <div className="clothing__list">
         <ul className="clothing__card-list">
-          {defaultClothingItems
+          {clothingItems
             .filter((item) => {
               return item;
-              //   return item.weather === weatherData.type;
             })
             .map((item) => {
               return (

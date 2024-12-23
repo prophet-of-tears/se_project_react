@@ -7,7 +7,7 @@ function ItemCard({ item, onCardClick }) {
     <li className="clothing__card-item">
       <h2 className="clothing__card-title">{item.name}</h2>
       <img
-        src={item.link}
+        src={item.imageUrl}
         alt={item.name}
         onClick={handleCardClick}
         className="clothing__card-image"
