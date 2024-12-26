@@ -21,7 +21,7 @@ const AddItemModal = ({ handleClose, onAddItem, isOpen }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onAddItem({ name, imageUrl });
+    onAddItem({ name, imageUrl, weather });
   };
 
   //console.log(weather);

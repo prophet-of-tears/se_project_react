@@ -40,19 +40,23 @@ function App() {
   };
 
   const handleDeleteCard = (card) => {
-    deleteItem(card).then(() => {
-      console.log("Delete response:", card);
-      setClothingItems((prevCards) =>
-        prevCards.filter((card) => card._id !== selectedCard._id)
-      ).catch(`Error: ${card.status}`);
-      handleModalClose();
-    });
+    deleteItem(card)
+      .then(() => {
+        console.log("Delete response:", card);
+        setClothingItems((prevCards) =>
+          prevCards.filter((card) => card._id !== selectedCard._id)
+        );
+        handleModalClose();
+      })
+      .catch(console.error);
   };
 
   const onAddItem = (values) => {
-    addItem(values).then((res) => {
-      setClothingItems((prev) => [res, ...prev]);
-    });
+    addItem(values)
+      .then((res) => {
+        setClothingItems((prev) => [res, ...prev]);
+      })
+      .catch(console.error);
   };
 
   useEffect(() => {
