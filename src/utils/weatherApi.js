@@ -1,13 +1,15 @@
+function checkResponse(res) {
+  if (res.ok) {
+    return res.json();
+  } else {
+    Promise.reject(`Error: ${res.status}`);
+  }
+}
+
 export const getCurrentWeather = ({ latitude, longitude }, APIkey) => {
   return fetch(
     `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=${APIkey}`
-  ).then((res) => {
-    if (res.ok) {
-      return res.json();
-    } else {
-      Promise.reject(`Error: ${res.status}`);
-    }
-  });
+  ).then(checkResponse);
 };
 
 export const filterWeatherData = (data) => {

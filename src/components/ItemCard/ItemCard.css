@@ -8,14 +8,15 @@
 
 .clothing__card-item {
   position: relative;
-  width: 325px;
-  height: 328px;
+  width: 323px;
+  height: 326px;
 }
 
 .clothing__card-image {
   border-radius: 15px;
   border: 1px solid rgba(0, 0, 0, 0.3);
   width: 100%;
+  height: 100%;
 }
 
 .clothing__card-title {
