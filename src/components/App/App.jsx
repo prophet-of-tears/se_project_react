@@ -33,6 +33,11 @@ function App() {
     setActiveModal("add-garment");
   };
 
+  const handleSignUp = () => {
+    console.log("it works");
+    setActiveModal("signup");
+  };
+
   const handleModalClose = () => {
     setActiveModal("");
   };
@@ -92,7 +97,11 @@ function App() {
         value={{ currentTemperatureUnit, handleToggleSwitchChange }}
       >
         <div className="page__content">
-          <Header handleAddClick={handleAddClick} weatherData={weatherData} />
+          <Header
+            handleAddClick={handleAddClick}
+            weatherData={weatherData}
+            handleSignUp={handleSignUp}
+          />
           <Routes>
             <Route
               path="/"
@@ -101,6 +110,7 @@ function App() {
                   weatherData={weatherData}
                   handleCardClick={handleCardClick}
                   clothingItems={clothingItems}
+                  handleModalClose={handleModalClose}
                 />
               }
             />

@@ -24,6 +24,9 @@
 .header__user-container {
   display: flex;
   margin-left: 20px;
+  gap: 20px;
+  font-size: 20px;
+  line-height: 24;
 }
 
 .header__avatar {
@@ -31,6 +34,18 @@
   margin-top: 10px;
   width: 40px;
   height: 40px;
+}
+
+.header__signup {
+  margin-left: 20px;
+  border: none;
+  background-color: rgb(243, 243, 243);
+}
+
+.header__login {
+  margin-left: 20px;
+  border: none;
+  background-color: rgb(243, 243, 243);
 }
 
 .header__link {
