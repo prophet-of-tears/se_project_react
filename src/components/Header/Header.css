@@ -29,6 +29,9 @@
   line-height: 24;
 }
 
+.header__username {
+}
+
 .header__avatar {
   margin-left: 12px;
   margin-top: 10px;

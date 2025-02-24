@@ -4,6 +4,7 @@ import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperature
 
 function WeatherCard({ weatherData }) {
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext); //this is how you make the currentTemperatureUnit available
+
   return (
     <section className="weather-card">
       <p className="weather__card-temp">

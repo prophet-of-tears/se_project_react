@@ -1,19 +1,13 @@
 import WeatherCard from "../WeatherCard/WeatherCard.jsx";
 import ItemCard from "../ItemCard/ItemCard";
 import RegisterModal from "../RegisterModal/RegisterModal.jsx";
-//import { defaultClothingItems } from "../../utils/constants.js";
+import LoginModal from "../LoginModal/LoginModal.jsx";
 import { useContext } from "react";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext.jsx";
 import { useEffect, useState } from "react";
+import { Routes, Route } from "react-router-dom";
 
-function Main({
-  weatherData,
-  handleCardClick,
-  clothingItems,
-  handleModalClose,
-}) {
-  const [activeModal, setActiveModal] = useState("");
-
+function Main({ weatherData, handleCardClick, clothingItems }) {
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
 
   return (
@@ -43,10 +37,18 @@ function Main({
             })}
         </ul>
       </section>
-      <RegisterModal
+
+      {/* <RegisterModal
         isOpen={activeModal === "signup"}
         handleModalClose={handleModalClose}
-      />
+        handleRegistration={handleRegistration}
+      /> */}
+
+      {/* <LoginModal
+        isOpen={activeModal === "login"}
+        handleModalClose={handleModalClose}
+        handleLogin={handleLogin}
+      /> */}
     </main>
   );
 }
