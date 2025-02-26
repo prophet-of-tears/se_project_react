@@ -8,6 +8,8 @@
 @import url(../src/components/Footer/Footer.css);
 @import url(../src/components/RegisterModal/RegisterModal.css);
 @import url(../src/components/LoginModal/LoginModal.css);
+@import url(../src/components/SideBar/SideBar.css);
+@import url(../src/components/EditProfileModal/EditProfileModal.css);
 
 @font-face {
   font-family: "Cabinet Grotesk Regular";

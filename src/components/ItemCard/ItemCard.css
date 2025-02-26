@@ -12,6 +12,22 @@
   height: 326px;
 }
 
+.clothing__like-btn {
+  width: 25px;
+  height: 21px;
+  background-repeat: no-repeat;
+  background-image: url(../../assets/likeButton.svg);
+  border: none;
+  position: absolute;
+  top: 18px;
+  left: 209px;
+  background-color: rgb(231, 231, 231);
+}
+
+.clothing__like-btn_liked {
+  background-image: url(../../assets/likeButtonBlack.svg);
+}
+
 .clothing__card-image {
   border-radius: 15px;
   border: 1px solid rgba(0, 0, 0, 0.3);

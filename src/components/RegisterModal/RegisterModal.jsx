@@ -11,10 +11,6 @@ function RegisterModal({ handleModalClose, isOpen, handleRegistration }) {
     e.preventDefault();
     handleRegistration({ email, password, name, avatar });
     handleModalClose();
-    email = "";
-    password = "";
-    name = "";
-    avatar = "";
   };
 
   return (

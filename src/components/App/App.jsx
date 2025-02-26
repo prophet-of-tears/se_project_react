@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
 
-import { setToken, getToken } from "../../utils/token";
+import { setToken, getToken, removeToken } from "../../utils/token";
 
 import "./App.css";
 import Header from "../Header/Header";
@@ -13,18 +13,23 @@ import Profile from "../Profile/Profile";
 import ProtectedRoute from "../ProtectedRoutes";
 import LoginModal from "../LoginModal/LoginModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
+import EditProfileModal from "../EditProfileModal/EditProfileModal";
 import {
   getItems,
   addItem,
   deleteItem,
   getUserInfo,
+  addCardLike,
   setUserInfo,
+  updateUser,
+  removeCardLike,
 } from "../../utils/api";
 import { getCurrentWeather, filterWeatherData } from "../../utils/weatherApi";
 import { coordinates, APIkey } from "../../utils/constants";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import * as auth from "../../utils/auth";
+import * as api from "../../utils/api";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -36,16 +41,23 @@ function App() {
   const [selectedCard, setSelectedCard] = useState({});
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [clothingItems, setClothingItems] = useState([]);
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
-  const [currentUser, setCurrentUser] = useState({ email: "", password: "" });
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [currentUser, setCurrentUser] = useState({
+    email: "",
+    password: "",
+    avatar: "",
+    name: "",
+  });
   const navigate = useNavigate();
 
   const handleRegistration = ({ email, password, name, avatar }) => {
     if (email && password && name && avatar) {
       auth
         .signUp({ email, password, name, avatar })
-        .then(() => {
-          navigate("/signin");
+        .then((data) => {
+          console.log(data);
+          handleLogin({ email: data.email, password: data.password });
+          navigate("/profile");
         })
         .catch((err) => {
           console.log(err);
@@ -59,10 +71,14 @@ function App() {
     }
     auth
       .signIn({ email, password })
-      .then((data) => {
-        if (data.jwt) {
-          setToken(data.jwt);
-          setCurrentUser(data.user);
+      .then(async (data) => {
+        console.log(data);
+        if (data.token) {
+          console.log("signin successful");
+          const userInfo = await getUserInfo(data.token);
+          console.log(userInfo);
+          setToken(data.token);
+          setCurrentUser(userInfo);
           setIsLoggedIn(true);
           navigate("/profile");
         }
@@ -70,6 +86,36 @@ function App() {
       .catch((err) => {
         console.log(err);
       });
+  };
+
+  const handleCardLike = ({ _id }, isLiked) => {
+    const token = getToken();
+
+    !isLiked
+      ? api
+
+          .addCardLike(_id, token)
+          .then((updatedCard) => {
+            setClothingItems((cards) =>
+              cards.map((item) => (item._id === _id ? updatedCard.item : item))
+            );
+          })
+          .catch((err) => console.log(err))
+      : api
+
+          .removeCardLike(_id, token)
+          .then((updatedCard) => {
+            setClothingItems((cards) =>
+              cards.map((item) => (item._id === _id ? updatedCard.item : item))
+            );
+          })
+          .catch((err) => console.log(err));
+  };
+
+  const handleSignOut = (token) => {
+    removeToken(token);
+    setIsLoggedIn(false);
+    navigate("/");
   };
 
   const handleCardClick = (card) => {
@@ -94,6 +140,10 @@ function App() {
     setActiveModal("");
   };
 
+  const handleProfileUpdate = () => {
+    setActiveModal("update");
+  };
+
   const handleDeleteCard = (card) => {
     deleteItem(card)
       .then(() => {
@@ -106,7 +156,16 @@ function App() {
       .catch(console.error);
   };
 
+  const updateUser = ({ name, avatar }) => {
+    api.updateUser({ name, avatar }).then((data) => {
+      currentUser.name = data.name;
+      currentUser.avatar = data.avatar;
+    });
+  };
+
   const onAddItem = (values) => {
+    console.log(values);
+
     addItem(values)
       .then((res) => {
         setClothingItems((prev) => [res, ...prev]);
@@ -121,9 +180,9 @@ function App() {
     if (!jwt) {
       return;
     }
-    api.getUserInfo(jwt).then(({ email, password }) => {
+    api.getUserInfo(jwt).then((data) => {
       setIsLoggedIn(true);
-      setCurrentUser({ email, password });
+      setCurrentUser(data);
       navigate("/profile");
     });
   }, []);
@@ -180,7 +239,6 @@ function App() {
                     handleModalClose={handleModalClose}
                     activeModal={activeModal}
                     handleRegistration={handleRegistration}
-                    handleLogin={handleLogin}
                   />
                 }
               />
@@ -194,6 +252,9 @@ function App() {
                       handleCardClick={handleCardClick}
                       clothingItems={clothingItems}
                       handleAddClick={handleAddClick}
+                      handleProfileUpdate={handleProfileUpdate}
+                      onCardLike={handleCardLike}
+                      handleSignOut={handleSignOut}
                     />
                   </ProtectedRoute>
                 }
@@ -227,6 +288,11 @@ function App() {
             card={selectedCard}
             onClose={handleModalClose}
             handleDeleteCard={handleDeleteCard}
+          />
+          <EditProfileModal
+            updateUser={updateUser}
+            activeModal={activeModal}
+            onClose={handleModalClose}
           />
         </div>
       </CurrentTemperatureUnitContext.Provider>

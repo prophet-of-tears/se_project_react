@@ -19,7 +19,6 @@ function Header({
   });
 
   const { currentUser, isLoggedIn } = useContext(CurrentUserContext);
-  console.log(currentUser);
 
   return (
     <header className="header">
@@ -40,12 +39,12 @@ function Header({
       {isLoggedIn ? (
         <Link to="/profile" className="header__link">
           <div className="header__user-container">
-            <p className="header__username">Jeremiah Partee</p>
             <img
               src={currentUser.avatar}
               alt="avatar image"
               className="header__avatar"
             />
+            <p className="header__username">{currentUser.name} </p>
           </div>
         </Link>
       ) : (

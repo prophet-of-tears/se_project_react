@@ -3,10 +3,12 @@ import { useState } from "react";
 function LoginModal({ handleModalClose, isOpen, handleLogin }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [avatar, setAvatar] = useState("");
+  const [name, setName] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    handleLogin({ email, password });
+    handleLogin({ email, password, avatar, name });
     handleModalClose();
   };
 

@@ -1,4 +1,8 @@
 .sidebar {
+  padding-left: 40px;
+}
+
+.sidebar__container {
   display: flex;
   column-gap: 16px;
   align-items: center;
@@ -12,4 +16,26 @@
 .sidebar__username {
   font-size: 20px;
   width: 157px;
+}
+
+.sidebar__profile {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.sidebar__profile-update {
+  border: none;
+  background-color: rgb(243, 243, 243);
+  width: fit-content;
+}
+
+.sidebar__profile-logout {
+  margin-top: 8px;
+  border: none;
+  background-color: rgb(243, 243, 243);
+  width: fit-content;
 }
