@@ -24,8 +24,6 @@ const AddItemModal = ({ handleClose, onAddItem, isOpen }) => {
     onAddItem({ name, imageUrl, weather });
   };
 
-  //console.log(weather);
-
   return (
     <ModalWithForm
       buttonText="Add Garment"

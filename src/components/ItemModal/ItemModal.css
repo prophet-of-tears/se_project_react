@@ -7,13 +7,14 @@
 
 .modal__close-item {
   background-image: url(../../assets/CloseBtn.svg);
-  background-color: rgba(234, 233, 233, 0.302);
+  background-color: transparent;
 }
 
 .modal__image {
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   height: 490px;
+  max-width: 490px;
 }
 
 .modal__footer {

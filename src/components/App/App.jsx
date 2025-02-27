@@ -165,18 +165,25 @@ function App() {
 
   const updateUser = ({ name, avatar }) => {
     api.updateUser({ name, avatar }).then((data) => {
-      currentUser.name = data.name;
-      currentUser.avatar = data.avatar;
+      console.log(data);
+      setCurrentUser({
+        ...currentUser,
+        name: data.user.name,
+        avatar: data.user.avatar,
+      });
     });
   };
 
   const onAddItem = (values) => {
     console.log(values);
+    console.log(clothingItems);
 
     addItem(values)
       .then((res) => {
-        setClothingItems((prev) => [res, ...prev]);
+        console.log(res);
+        setClothingItems([...clothingItems, res.data]);
         handleModalClose();
+        console.log(clothingItems);
       })
       .catch(console.error);
   };
