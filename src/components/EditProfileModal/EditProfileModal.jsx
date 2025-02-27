@@ -46,7 +46,12 @@ function EditProfileModal({ activeModal, onClose, updateUser }) {
             onChange={(e) => setAvatar(e.target.value)}
           />
         </label>
-        <button type="submit" className="modal__submit-btn">
+        <button
+          type="submit"
+          className={`modal__submit-btn ${
+            name || avatar ? "modal__submit-btn_active" : ""
+          }`}
+        >
           Save Changes
         </button>
       </form>

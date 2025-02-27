@@ -7,11 +7,19 @@ function SideBar({ handleProfileUpdate, signOut }) {
   return (
     <div className="sidebar">
       <div className="sidebar__container">
-        <img
-          src={currentUser.avatar}
-          alt="sidebar content"
-          className="sidebar__avatar"
-        />
+        {currentUser.avatar ? (
+          <img
+            src={currentUser.avatar}
+            alt="avatar image"
+            className="header__avatar"
+          />
+        ) : (
+          <div className="header__first-letter-container">
+            <span src={avatarPlaceholder} className="avatar-initial">
+              {currentUser.name.charAt(0).toUpperCase()}
+            </span>
+          </div>
+        )}
         <p className="sidebar__username">{currentUser.name}</p>
       </div>
 

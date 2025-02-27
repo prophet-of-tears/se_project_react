@@ -32,6 +32,16 @@
 .header__username {
 }
 
+.header__first-letter-container {
+  border: 1px solid black;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: cadetblue;
+}
 .header__avatar {
   margin-left: 12px;
   margin-top: 10px;

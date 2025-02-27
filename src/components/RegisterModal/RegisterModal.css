@@ -14,8 +14,12 @@
   background-color: rgba(0, 0, 0, 0.3);
 }
 
-.modal__register-btn-black {
+.modal__register-btn_active {
   background-color: black;
+}
+
+.modal__register-btn_active:hover {
+  background-color: rgba(0, 0, 0, 0.6);
 }
 
 .modal__login-btn {

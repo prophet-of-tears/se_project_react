@@ -55,7 +55,6 @@ function App() {
       auth
         .signUp({ email, password, name, avatar })
         .then((data) => {
-          console.log(data);
           handleLogin({ email: data.email, password: data.password });
           navigate("/profile");
         })
@@ -72,11 +71,9 @@ function App() {
     auth
       .signIn({ email, password })
       .then(async (data) => {
-        console.log(data);
         if (data.token) {
           console.log("signin successful");
           const userInfo = await getUserInfo(data.token);
-          console.log(userInfo);
           setToken(data.token);
           setCurrentUser(userInfo);
           setIsLoggedIn(true);
@@ -142,6 +139,16 @@ function App() {
 
   const handleProfileUpdate = () => {
     setActiveModal("update");
+  };
+
+  const handleRegisterSwitch = () => {
+    handleModalClose();
+    setActiveModal("login");
+  };
+
+  const handleLoginSwitch = () => {
+    handleModalClose();
+    setActiveModal("signup");
   };
 
   const handleDeleteCard = (card) => {
@@ -275,12 +282,14 @@ function App() {
             isOpen={activeModal === "signup"}
             handleModalClose={handleModalClose}
             handleRegistration={handleRegistration}
+            handleRegisterSwitch={handleRegisterSwitch}
           />
 
           <LoginModal
             isOpen={activeModal === "login"}
             handleModalClose={handleModalClose}
             handleLogin={handleLogin}
+            handleLoginSwitch={handleLoginSwitch}
           />
 
           <ItemModal

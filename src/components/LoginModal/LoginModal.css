@@ -14,3 +14,11 @@
   border: none;
   background-color: rgb(255, 255, 255);
 }
+
+.modal__signin-btn_active {
+  background-color: black;
+}
+
+.modal__signin-btn_active:hover {
+  background-color: rgba(0, 0, 0, 0.6);
+}

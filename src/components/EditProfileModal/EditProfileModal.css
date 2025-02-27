@@ -1,13 +1,7 @@
-/* .modal {
-  width: 496px;
-  height: 304px;
-  margin: auto;
-  display: flex;
-  flex-direction: column;
-  background-color: rgb(255, 255, 255);
+.modal__submit-btn_active {
+  background-color: black;
 }
 
-.modal__header {
-  display: flex;
-  gap: 332px;
-} */
+.modal__submit-btn_active:hover {
+  background-color: rgba(0, 0, 0, 0.6);
+}

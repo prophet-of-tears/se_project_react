@@ -1,6 +1,11 @@
 import { useState } from "react";
 
-function LoginModal({ handleModalClose, isOpen, handleLogin }) {
+function LoginModal({
+  handleModalClose,
+  isOpen,
+  handleLogin,
+  handleLoginSwitch,
+}) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [avatar, setAvatar] = useState("");
@@ -49,10 +54,19 @@ function LoginModal({ handleModalClose, isOpen, handleLogin }) {
             />
           </label>
 
-          <button type="submit" className="modal__signin-btn">
+          <button
+            type="submit"
+            className={`modal__signin-btn ${
+              email && password ? "modal__signin-btn_active" : ""
+            }`}
+          >
             Log in{" "}
           </button>
-          <button type="button" className="modal__new-profile">
+          <button
+            onClick={handleLoginSwitch}
+            type="button"
+            className="modal__new-profile"
+          >
             or Register
           </button>
         </form>

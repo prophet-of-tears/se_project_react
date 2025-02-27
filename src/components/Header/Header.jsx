@@ -3,6 +3,7 @@ import { useContext } from "react";
 
 import "./Header.css";
 import logo from "../../assets/logo.svg";
+import avatarPlaceholder from "../../assets/placeholder.svg";
 
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
@@ -19,6 +20,7 @@ function Header({
   });
 
   const { currentUser, isLoggedIn } = useContext(CurrentUserContext);
+  console.log(currentUser);
 
   return (
     <header className="header">
@@ -39,11 +41,21 @@ function Header({
       {isLoggedIn ? (
         <Link to="/profile" className="header__link">
           <div className="header__user-container">
-            <img
-              src={currentUser.avatar}
-              alt="avatar image"
-              className="header__avatar"
-            />
+            <div className="header__user-avatar">
+              {currentUser.avatar ? (
+                <img
+                  src={currentUser.avatar}
+                  alt="avatar image"
+                  className="header__avatar"
+                />
+              ) : (
+                <div className="header__first-letter-container">
+                  <span src={avatarPlaceholder} className="avatar-initial">
+                    {currentUser.name.charAt(0).toUpperCase()}
+                  </span>
+                </div>
+              )}
+            </div>
             <p className="header__username">{currentUser.name} </p>
           </div>
         </Link>

@@ -3,7 +3,7 @@ import sunny from "../../assets/sunny.png";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
 
 function WeatherCard({ weatherData }) {
-  const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext); //this is how you make the currentTemperatureUnit available
+  const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
 
   return (
     <section className="weather-card">
