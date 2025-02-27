@@ -7,7 +7,7 @@ import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperature
 import { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 
-function Main({ weatherData, handleCardClick, clothingItems }) {
+function Main({ weatherData, handleCardClick, clothingItems, onCardLike }) {
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
 
   return (
@@ -32,23 +32,12 @@ function Main({ weatherData, handleCardClick, clothingItems }) {
                   key={item._id}
                   item={item}
                   onCardClick={handleCardClick}
+                  onCardLike={onCardLike}
                 /> //item must be passed as a prop
               );
             })}
         </ul>
       </section>
-
-      {/* <RegisterModal
-        isOpen={activeModal === "signup"}
-        handleModalClose={handleModalClose}
-        handleRegistration={handleRegistration}
-      /> */}
-
-      {/* <LoginModal
-        isOpen={activeModal === "login"}
-        handleModalClose={handleModalClose}
-        handleLogin={handleLogin}
-      /> */}
     </main>
   );
 }

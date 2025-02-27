@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 function ItemModal({ activeModal, card, onClose, handleDeleteCard }) {
-  const { currentUser } = useContext(CurrentUserContext);
+  const { currentUser, isLoggedIn } = useContext(CurrentUserContext);
   const isOwn = card.owner === currentUser._id;
 
   return (
@@ -19,15 +19,19 @@ function ItemModal({ activeModal, card, onClose, handleDeleteCard }) {
           <h2 className="modal__caption">{card.name}</h2>
           <p className="modal__weather">weather: {card.weather}</p>
         </div>
-        <button
-          onClick={() => handleDeleteCard(card._id)}
-          type="button"
-          className={`modal__delete-btn ${
-            isOwn ? "" : "modal__delete-btn_hidden"
-          } `}
-        >
-          Delete item
-        </button>
+        {isLoggedIn ? (
+          <button
+            onClick={() => handleDeleteCard(card._id)}
+            type="button"
+            className={`modal__delete-btn ${
+              isOwn ? "" : "modal__delete-btn_hidden"
+            } `}
+          >
+            Delete item
+          </button>
+        ) : (
+          ""
+        )}
       </div>
     </div>
   );

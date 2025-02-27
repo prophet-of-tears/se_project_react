@@ -41,10 +41,10 @@ function LoginModal({
               }}
             />
           </label>
-          <label htmlFor="password" className="modal__label">
+          <label htmlFor="login-password" className="modal__label">
             Password
             <input
-              type="password"
+              type="login-password"
               id="password"
               placeholder="Password"
               className="modal__input"

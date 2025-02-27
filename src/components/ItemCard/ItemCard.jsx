@@ -11,14 +11,13 @@ function ItemCard({ item, onCardClick, onCardLike }) {
   const currentUserId = currentUser._id;
 
   const handleCardClick = () => {
+    console.log(item);
     onCardClick(item);
   };
 
   const handleLike = () => {
     onCardLike(item, isLiked);
   };
-
-  console.log(isLiked);
 
   //isLiked should be true if the currently logged in user's id exists inside of the 'likes' array. Otherwise it should be false
 

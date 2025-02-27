@@ -24,24 +24,24 @@ function EditProfileModal({ activeModal, onClose, updateUser }) {
           className="modal__close"
         ></button>
 
-        <label htmlFor="name" className="modal__label">
+        <label htmlFor="edit-profile-name" className="modal__label">
           Name
           <input
             value={name}
             type="text"
             placeholder="Name"
-            id="name"
+            id="edit-profile-name"
             className="modal__input"
             onChange={(e) => setName(e.target.value)}
           />
         </label>
-        <label htmlFor="avatarUrl" className="modal__label">
+        <label htmlFor="edit-avatarUrl" className="modal__label">
           Avatar
           <input
             value={avatar}
             type="url"
             placeholder="Avatar"
-            id="avatar URL"
+            id="edit-avatarUrl"
             className="modal__input"
             onChange={(e) => setAvatar(e.target.value)}
           />

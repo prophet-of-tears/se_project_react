@@ -34,10 +34,10 @@ const AddItemModal = ({ handleClose, onAddItem, isOpen }) => {
       handleClose={handleClose}
       onSubmit={handleSubmit}
     >
-      <label htmlFor="name" className="modal__label">
+      <label htmlFor="item-modal-name" className="modal__label">
         Name
         <input
-          id="name"
+          id="item-modal-name"
           type="text"
           placeholder="Name"
           className="modal__input"

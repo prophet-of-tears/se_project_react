@@ -20,7 +20,6 @@ function Header({
   });
 
   const { currentUser, isLoggedIn } = useContext(CurrentUserContext);
-  console.log(currentUser);
 
   return (
     <header className="header">
@@ -31,13 +30,18 @@ function Header({
         {currentDate}, {weatherData.city}
       </p>
       <ToggleSwitch />
-      <button
-        type="button"
-        className="header__add-clothes-button"
-        onClick={handleAddClick}
-      >
-        + Add Clothes
-      </button>
+      {isLoggedIn ? (
+        <button
+          type="button"
+          className="header__add-clothes-button"
+          onClick={handleAddClick}
+        >
+          + Add Clothes
+        </button>
+      ) : (
+        ""
+      )}
+
       {isLoggedIn ? (
         <Link to="/profile" className="header__link">
           <div className="header__user-container">

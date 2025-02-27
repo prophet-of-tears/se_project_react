@@ -246,6 +246,7 @@ function App() {
                     handleModalClose={handleModalClose}
                     activeModal={activeModal}
                     handleRegistration={handleRegistration}
+                    onCardLike={handleCardLike}
                   />
                 }
               />

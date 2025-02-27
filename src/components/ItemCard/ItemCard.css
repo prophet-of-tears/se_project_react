@@ -21,11 +21,12 @@
   position: absolute;
   top: 18px;
   left: 209px;
-  background-color: rgb(231, 231, 231);
+  background-color: transparent;
 }
 
 .clothing__like-btn_liked {
   background-image: url(../../assets/likeButtonBlack.svg);
+  background-color: transparent;
 }
 
 .clothing__card-image {

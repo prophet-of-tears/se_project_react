@@ -39,10 +39,10 @@ function RegisterModal({
                 }}
               />
             </label>
-            <label htmlFor="password" className="modal__label">
+            <label htmlFor="register-password" className="modal__label">
               Password
               <input
-                id="password"
+                id="register-password"
                 type="password"
                 placeholder="Password"
                 className="modal__input"
@@ -51,10 +51,10 @@ function RegisterModal({
                 }}
               />
             </label>
-            <label htmlFor="name" className="modal__label">
+            <label htmlFor="register-name" className="modal__label">
               Name
               <input
-                id="name"
+                id="register-name"
                 type="text"
                 placeholder="Name"
                 className="modal__input"
@@ -63,10 +63,10 @@ function RegisterModal({
                 }}
               />
             </label>
-            <label htmlFor="avatarUrl" className="modal__label">
+            <label htmlFor="register-avatarUrl" className="modal__label">
               Avatar URL
               <input
-                id="avatarUrl"
+                id="register-avatarUrl"
                 type="URL"
                 placeholder="Avatar URL"
                 className="modal__input"
