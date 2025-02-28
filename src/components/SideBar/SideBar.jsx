@@ -4,6 +4,11 @@ import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 function SideBar({ handleProfileUpdate, signOut }) {
   const { currentUser, isLoggedIn } = useContext(CurrentUserContext);
+
+  const handleOpen = () => {
+    handleProfileUpdate();
+  };
+
   return (
     <div className="sidebar">
       <div className="sidebar__container">
@@ -25,7 +30,7 @@ function SideBar({ handleProfileUpdate, signOut }) {
 
       <div className="sidebar__profile">
         <button
-          onClick={handleProfileUpdate}
+          onClick={handleOpen}
           type="button"
           className="sidebar__profile-update"
         >

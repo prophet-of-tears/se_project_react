@@ -180,15 +180,11 @@ function App() {
   };
 
   const onAddItem = (values) => {
-    console.log(values);
-    console.log(clothingItems);
-
     addItem(values)
       .then((res) => {
-        console.log(res);
-        setClothingItems([...clothingItems, res.data]);
+        setClothingItems([res.data, ...clothingItems]);
+
         handleModalClose();
-        console.log(clothingItems);
       })
       .catch(console.error);
   };
