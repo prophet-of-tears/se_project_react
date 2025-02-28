@@ -23,4 +23,4 @@ function signIn({ email, password }) {
   }).then(checkResponse);
 }
 
-export { signUp, signIn };
+export { signUp, signIn, checkResponse };

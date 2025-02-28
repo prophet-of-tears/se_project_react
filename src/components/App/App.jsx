@@ -56,6 +56,7 @@ function App() {
         .signUp({ email, password, name, avatar })
         .then((data) => {
           handleLogin({ email: data.email, password: data.password });
+          handleModalClose();
           navigate("/profile");
         })
         .catch((err) => {
@@ -77,6 +78,7 @@ function App() {
           setToken(data.token);
           setCurrentUser(userInfo);
           setIsLoggedIn(true);
+          handleModalClose();
           navigate("/profile");
         }
       })
@@ -164,14 +166,17 @@ function App() {
   };
 
   const updateUser = ({ name, avatar }) => {
-    api.updateUser({ name, avatar }).then((data) => {
-      console.log(data);
-      setCurrentUser({
-        ...currentUser,
-        name: data.user.name,
-        avatar: data.user.avatar,
-      });
-    });
+    api
+      .updateUser({ name, avatar })
+      .then((data) => {
+        setCurrentUser({
+          ...currentUser,
+          name: data.user.name,
+          avatar: data.user.avatar,
+        });
+        handleModalClose();
+      })
+      .catch(console.error);
   };
 
   const onAddItem = (values) => {
@@ -194,11 +199,14 @@ function App() {
     if (!jwt) {
       return;
     }
-    api.getUserInfo(jwt).then((data) => {
-      setIsLoggedIn(true);
-      setCurrentUser(data);
-      navigate("/profile");
-    });
+    api
+      .getUserInfo(jwt)
+      .then((data) => {
+        setIsLoggedIn(true);
+        setCurrentUser(data);
+        navigate("/profile");
+      })
+      .catch(console.error);
   }, []);
 
   useEffect(() => {
@@ -262,7 +270,6 @@ function App() {
                 element={
                   <ProtectedRoute isLoggedIn={isLoggedIn}>
                     <Profile
-                      userData={currentUser}
                       weatherData={weatherData}
                       handleCardClick={handleCardClick}
                       clothingItems={clothingItems}
@@ -288,7 +295,7 @@ function App() {
 
           <RegisterModal
             isOpen={activeModal === "signup"}
-            handleModalClose={handleModalClose}
+            onClose={handleModalClose}
             handleRegistration={handleRegistration}
             handleRegisterSwitch={handleRegisterSwitch}
           />
@@ -298,6 +305,7 @@ function App() {
             handleModalClose={handleModalClose}
             handleLogin={handleLogin}
             handleLoginSwitch={handleLoginSwitch}
+            onClose={handleModalClose}
           />
 
           <ItemModal
@@ -308,7 +316,7 @@ function App() {
           />
           <EditProfileModal
             updateUser={updateUser}
-            activeModal={activeModal}
+            isOpen={activeModal === "update"}
             onClose={handleModalClose}
           />
         </div>

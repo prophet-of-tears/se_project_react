@@ -1,10 +1,7 @@
 import { getToken } from "./token";
+import { checkResponse } from "./auth";
 
 const baseUrl = "http://localhost:3001";
-
-function checkResponse(res) {
-  return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
-}
 
 function getUserInfo(token) {
   return fetch(`${baseUrl}/users/me`, {

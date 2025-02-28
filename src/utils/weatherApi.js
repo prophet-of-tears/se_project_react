@@ -1,10 +1,4 @@
-function checkResponse(res) {
-  if (res.ok) {
-    return res.json();
-  } else {
-    Promise.reject(`Error: ${res.status}`);
-  }
-}
+import { checkResponse } from "./auth";
 
 export const getCurrentWeather = ({ latitude, longitude }, APIkey) => {
   return fetch(
