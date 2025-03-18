@@ -1,7 +1,6 @@
 import { getToken } from "./token";
 import { checkResponse } from "./auth";
-
-const baseUrl = "http://localhost:3001";
+import { baseUrl } from "./constants";
 
 function getUserInfo(token) {
   return fetch(`${baseUrl}/users/me`, {
@@ -98,4 +97,5 @@ export {
   updateUser,
   addCardLike,
   removeCardLike,
+  baseUrl,
 };

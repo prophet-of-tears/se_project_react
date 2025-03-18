@@ -4,3 +4,8 @@ export const coordinates = {
 };
 
 export const APIkey = "db4820cdde85ee9d5b70befd87a77fe7";
+
+export const baseUrl =
+  process.env.NODE_ENV === "production"
+    ? "api.makeafit.moonangel.com"
+    : "http://localhost:3001";
