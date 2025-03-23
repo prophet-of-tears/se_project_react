@@ -17,7 +17,7 @@ function setUserInfo(token, { name, imageUrl }) {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      authorization: `Bearer ${token}`,
+      authorization: `Bearer ${getToken()}`,
     },
     body: JSON.stringify({ name, imageUrl }),
   }).then(checkResponse);
