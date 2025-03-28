@@ -27,7 +27,7 @@ function getItems() {
   return fetch(`${baseUrl}/items`).then(checkResponse);
 }
 
-function addItem({ name = "", weather = "", imageUrl = "", _id = "" } = {}) {
+function addItem({ name = "", weather = "", imageUrl = "" } = {}) {
   return fetch(`${baseUrl}/items`, {
     method: "POST",
     headers: {
@@ -38,7 +38,6 @@ function addItem({ name = "", weather = "", imageUrl = "", _id = "" } = {}) {
       name,
       imageUrl,
       weather,
-      _id,
     }),
   }).then(checkResponse);
 }
