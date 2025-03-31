@@ -26,6 +26,8 @@ function ClothesSection({
           {clothingItems
             .filter((item) => item.owner === currentUser._id)
             .map((item) => {
+              console.log(clothingItems);
+              console.log(item);
               return (
                 <ItemCard
                   key={item._id}
