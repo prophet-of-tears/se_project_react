@@ -14,7 +14,16 @@ this project is designed to be a website that organizes the user's wardrobe and 
 -react
 -react dev tools
 
+## project Link
+
+https://makeafit.moonangel.com/
+
+## link to project video
+
+https://drive.google.com/file/d/1KdfTjG-RKt9ex0plJs_hbyqaXMCUXM7X/view?usp=drive_link
+
 ## link to back-end
+
 https://github.com/prophet-of-tears/se_project_express.git
 
 Currently, two official plugins are available:
